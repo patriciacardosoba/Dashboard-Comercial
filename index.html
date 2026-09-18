@@ -24,6 +24,27 @@
             --blue-5: #ec4899;
             --blue-6: #f472b6;
         }
+        --blue-5: #ec4899;
+    --blue-6: #f472b6;
+} /* Linha 26: Fim do bloco :root */
+
+/* Cole o código responsivo logo aqui abaixo: */
+@media (max-width: 768px) {
+    body, .dashboard-container, .container-principal {
+        flex-direction: column !important;
+        display: block !important;
+    }
+    aside, .sidebar, .menu-lateral {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+    }
+    main, .main-content, .conteudo-principal {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 10px !important;
+    }
+}
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: #1f163b; color: var(--text-main); display: grid; grid-template-columns: 260px 1fr; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; }
