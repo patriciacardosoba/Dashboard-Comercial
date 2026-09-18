@@ -24,27 +24,30 @@
             --blue-5: #ec4899;
             --blue-6: #f472b6;
         }
-        --blue-5: #ec4899;
-    --blue-6: #f472b6;
-} /* Linha 26: Fim do bloco :root */
 
-/* Cole o código responsivo logo aqui abaixo: */
-@media (max-width: 768px) {
-    body, .dashboard-container, .container-principal {
-        flex-direction: column !important;
-        display: block !important;
-    }
-    aside, .sidebar, .menu-lateral {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important;
-    }
-    main, .main-content, .conteudo-principal {
-        margin-left: 0 !important;
-        width: 100% !important;
-        padding: 10px !important;
-    }
-}
+        /* Regras responsivas para telemóveis e tablets */
+        @media (max-width: 768px) {
+            body, .dashboard-container, .container-principal {
+                flex-direction: column !important;
+                display: block !important;
+                height: auto !important;
+                overflow: auto !important;
+            }
+            aside, .sidebar, .menu-lateral {
+                width: 100% !important;
+                height: auto !important;
+                position: relative !important;
+            }
+            main, .main-content, .conteudo-principal {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 15px !important;
+                border-radius: 0 !important;
+            }
+            .kpi-grid, .insights-grid, .charts-grid-2 {
+                grid-template-columns: 1fr !important;
+            }
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: #1f163b; color: var(--text-main); display: grid; grid-template-columns: 260px 1fr; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; }
@@ -65,21 +68,18 @@
         .nav-item svg { width: 18px; height: 18px; fill: currentColor; }
         .nav-item:hover { color: var(--text-main); background-color: rgba(255,255,255,0.02); }
         .nav-item.active { background-color: rgba(56, 118, 166, 0.15); color: var(--blue-5); }
-        .db-card { background-color: var(--bg-base); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+        .db-card { background-color: #261c4c; padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #bfaee2; line-height: 1.5; }
         
-        /* Main Area */
-        .main-content { padding: 30px; overflow-y: auto; scroll-behavior: smooth; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        /* Header & Filters */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; }
         .header h1 { font-size: 24px; font-weight: 600; }
         .header p { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
         
-        /* Interactive Filters */
-        .filters-container { display: flex; gap: 15px; align-items: center; background: var(--bg-surface); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+        .filters-container { display: flex; gap: 15px; align-items: center; background: var(--bg-surface); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); flex-wrap: wrap; }
         .filter-group { display: flex; flex-direction: column; gap: 6px; }
         .filter-group label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
-        .filter-select { background-color: var(--bg-base); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-size: 13px; outline: none; cursor: pointer; transition: 0.2s; min-width: 140px; }
+        .filter-select { background-color: #faf5ff; border: 1px solid #f3e8ff; color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-size: 13px; outline: none; cursor: pointer; transition: 0.2s; min-width: 140px; }
         .filter-select:hover, .filter-select:focus { border-color: var(--blue-4); }
-        .filter-select::placeholder { color: var(--text-muted); }
         
         /* Pages */
         .page { display: none; animation: fadeIn 0.4s; }
@@ -88,16 +88,16 @@
         
         /* Grids & Cards */
         .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 15px; }
-        .kpi-card { background-color: var(--bg-surface); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; position: relative; overflow: hidden; }
-        .kpi-card.highlight { background: linear-gradient(135deg, var(--blue-2) 0%, var(--blue-4) 100%); border: none; }
+        .kpi-card { background-color: #ffffff; border: 1px solid #f3e8ff; padding: 20px; border-radius: 14px; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.04); }
+        .kpi-card.highlight { background: linear-gradient(135deg, #7c3aed 0%, #d946ef 100%); border: none; box-shadow: 0 8px 25px rgba(217, 70, 239, 0.25); }
         .kpi-title { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
         .kpi-card.highlight .kpi-title { color: rgba(255, 255, 255, 0.8); }
         .kpi-value { font-size: 24px; font-weight: 700; margin-bottom: 5px; transition: 0.3s; }
         .kpi-trend { font-size: 11px; color: var(--text-muted); }
         .kpi-card.highlight .kpi-trend { color: rgba(255, 255, 255, 0.8); }
 
-        .chart-section { background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .chart-header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .chart-section { background-color: #ffffff; border: 1px solid #f3e8ff; border-radius: 14px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.04); }
+        .chart-header { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .chart-header h3 { font-size: 16px; font-weight: 600; }
         .chart-container { height: 280px; position: relative; }
         
@@ -108,37 +108,6 @@
         .insight-card h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 8px;}
         .insight-card p { font-size: 14px; font-weight: 600; line-height: 1.5; color: var(--text-main); }
         .insight-card span.dynamic-val { color: var(--blue-6); font-weight: 700; }
-        .insight-card:nth-child(even) { border-left-color: var(--blue-5); }
-        .insight-card:nth-child(3n) { border-left-color: var(--blue-4); }
-        .insight-card:nth-child(4) { border-left-color: var(--blue-2); }
-        .insight-card:nth-child(5) { border-left-color: var(--blue-6); }
-    
-        /* Estilo de Cartões Limpos (Referência da Imagem) */
-        .chart-section, .kpi-card, .filters-container {
-            background-color: #ffffff;
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.04);
-            border: 1px solid #f3e8ff;
-            border-radius: 14px;
-        }
-        .kpi-card.highlight {
-            background: linear-gradient(135deg, #7c3aed 0%, #d946ef 100%);
-            border: none;
-            box-shadow: 0 8px 25px rgba(217, 70, 239, 0.25);
-        }
-        .filters-container {
-            background-color: #ffffff;
-        }
-        .filter-select {
-            background-color: #faf5ff;
-            border: 1px solid #f3e8ff;
-            color: #1a103c;
-        }
-        .db-card {
-            background-color: #261c4c;
-            border: 1px solid rgba(255,255,255,0.08);
-            color: #bfaee2;
-        }
-
     </style>
 </head>
 <body>
@@ -157,7 +126,6 @@
             Comercial
         </div>
         
-
         <ul class="nav-menu">
             <li class="nav-item active" onclick="switchTab('visao-geral', this)">
                 <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
@@ -308,7 +276,6 @@
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0;">
-                    <!-- Regional Visual Map / SVG representation -->
                     <div style="background: linear-gradient(135deg, #261c4c 0%, #1a103c 100%); border-radius: 12px; padding: 20px; color: white; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(124,58,237,0.15);">
                         <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px; color: #f472b6; display: flex; align-items: center; gap: 8px;">
                             <span>🗺️</span> Praças de Atuação Comercial (Sudeste / Sul)
@@ -336,12 +303,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Regional Bar Breakdown Chart -->
                     <div class="chart-container" style="height: 270px;">
                         <canvas id="regionalMapChart"></canvas>
                     </div>
                 </div>
             </div>
+            
             <div class="chart-section">
                 <div class="chart-header">
                     <div>
@@ -368,7 +335,6 @@
                     <canvas id="checkinChart"></canvas>
                 </div>
             </div>
-
 
             <div class="charts-grid-2">
                 <div class="chart-section">
@@ -475,50 +441,30 @@
 
         <!-- ABA 4: DIRETORIA -->
         <section id="diretoria" class="page">
-            <h2 style="margin-bottom: 20px;">Diretoria: Principais Insights </h2>
+            <h2 style="margin-bottom: 20px;">Diretoria: Principais Insights</h2>
             <div class="insights-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 25px;">
                 <div class="insight-card" style="border-left-color: var(--blue-4);">
-                    <h3> Crescimento Percentual (Vendas por Estabelecimento vs Mês Anterior)</h3>
+                    <h3>Crescimento Percentual (Vendas por Estabelecimento vs Mês Anterior)</h3>
                     <p>O segmento de <strong>Comércio (RP)</strong> apresentou aceleração expressiva de <span class="dynamic-val" style="color:var(--blue-4);">+27,4%</span> no último ciclo de alta em relação ao mês anterior, superando o crescimento de <strong>Residência (RE)</strong> que registrou alta de <span class="dynamic-val" style="color:var(--blue-5);">+18,2%</span>.</p>
                 </div>
                 <div class="insight-card" style="border-left-color: var(--blue-3);">
-                    <h3> Comparativa de Check-in e Check-out por Período</h3>
+                    <h3>Comparativa de Check-in e Check-out por Período</h3>
                     <p>A aderência de check-in manteve-se estável em <span class="dynamic-val">93,5%</span> nas visitas registradas, enquanto o fluxo de check-out com fechamento efetivo apresentou pico de eficiência de <span class="dynamic-val" style="color:var(--blue-3);">+8,4%</span> nos períodos vespertinos.</p>
                 </div>
             </div>
 
             <div class="insights-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
                 <div class="insight-card" style="border-left-color: var(--blue-2);">
-                    <h3> Filiais Novas vs Antigas (Regional)</h3>
+                    <h3>Filiais Novas vs Antigas (Regional)</h3>
                     <p>As <strong>Filiais de Expansão (Novas)</strong> representam <span class="dynamic-val">67,6%</span> da base e lideram o crescimento regional em SP-Cap (<span class="dynamic-val" style="color:var(--blue-6);">+12,5%</span>), enquanto as consolidadas (Antigas) mantêm margem estável.</p>
                 </div>
                 <div class="insight-card" style="border-left-color: var(--blue-5);">
-                    <h3> Variação de Vendedores por Filial</h3>
+                    <h3>Variação de Vendedores por Filial</h3>
                     <p>Identificado saldo líquido de <span class="dynamic-val" style="color:var(--blue-5);">+15 novos especialistas</span> no acumulado mensal por filial, com maior retenção nas unidades Core do Sudeste.</p>
                 </div>
                 <div class="insight-card" style="border-left-color: var(--blue-6);">
-                    <h3> Conversão Anual (Ano Anterior vs Atual)</h3>
+                    <h3>Conversão Anual (Ano Anterior vs Atual)</h3>
                     <p>A taxa de conversão média evoluiu de <span class="dynamic-val">29,8% (2024)</span> para <span class="dynamic-val" style="color:var(--blue-4);">32,6% (2025)</span>, representando um ganho de eficiência de <span class="dynamic-val" style="color:var(--blue-5);">+2,8 p.p.</span> na base consolidada.</p>
-                </div>
-            </div>
-
-            <div class="chart-section">
-                <div class="chart-header">
-                    <h3>Resumo: Principais Indicadores </h3>
-                </div>
-                <div class="insights-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0;">
-                    <div class="insight-card" style="border-left-color: var(--blue-3);">
-                        <h3>Melhor Filial em Conversão</h3>
-                        <p>A filial <span class="dynamic-val">BR CENTRO (1001521)</span> lidera com margem de conversão superior a <span class="dynamic-val">38,4%</span>.</p>
-                    </div>
-                    <div class="insight-card" style="border-left-color: var(--blue-4);">
-                        <h3>Destaque Individual (Período)</h3>
-                        <p>Matrícula <span class="dynamic-val" id="dir-best-seller">MA30041522</span> com <span class="dynamic-val" id="dir-best-vol">255</span> vendas registradas.</p>
-                    </div>
-                    <div class="insight-card" style="border-left-color: var(--blue-5);">
-                        <h3>Projeção de Fechamentos</h3>
-                        <p>Projeção de <span class="dynamic-val" id="dir-proj">5.213</span> unidades no ciclo atual, com alta de <span class="dynamic-val" style="color:var(--blue-5)">14,9%</span>.</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -535,7 +481,7 @@
             if(tabId === 'visao-geral') titleEl.innerText = 'Análise Geral';
             else if(tabId === 'vendedores') titleEl.innerText = 'Análise de Performance e Produtividade';
             else if(tabId === 'filial') titleEl.innerText = 'Análise Filial';
-            else if(tabId === 'diretoria') titleEl.innerText = 'Análise de Diretoria';
+            else if(tabId === 'diretoria') titleEl.innerText = 'Diretoria: Principais Insights';
         }
 
         Chart.defaults.color = '#1a103c';
@@ -560,13 +506,11 @@
                 totalVendas: 58171, fte: 143.3, vpp: 40.5, vpprp: 18.9,
                 visitas: 95078, conversao: 32.6, checkin: 93.5, bpp: 66.3
             },
-            
             checkinVendors: {
                 labels: ["MA30041522", "3193451522", "PI55551522", "Q762331522", "3193441522", "Q762221522", "TA21571522", "3184141522", "Q961631522", "3118281522"],
                 comCheckin: [401, 373, 376, 324, 336, 189, 130, 195, 130, 209],
                 semCheckin: [112, 56, 39, 61, 38, 167, 185, 120, 99, 9]
             },
-
             topVendedores: {
                 labels: ["MA30041522", "3193451522", "PI55551522", "3193441522", "Q762331522", "Q762221522", "S731241522", "TA21571522", "Q785611522", "LZ69731522", "VZ13841522", "3193871522", "DY33001522", "Q913931522", "Q984061522"],
                 data: [255, 244, 227, 223, 185, 170, 156, 147, 130, 129, 120, 119, 118, 116, 113]
@@ -587,7 +531,7 @@
             }
         };
 
-        let mainChart, produtoChart, donutChart, classChart, turnoverChart, topVendChart, checkinChart;
+        let mainChart, regionalMapChart, produtoChart, topVendChart, donutChart, classChart, checkinChart, turnoverChart;
         let filialVendChart, filialClassChart, filialTipoChart, filialCoreChart;
 
         function initCharts() {
@@ -613,7 +557,7 @@
             });
 
             const ctxRegional = document.getElementById('regionalMapChart').getContext('2d');
-            new Chart(ctxRegional, {
+            regionalMapChart = new Chart(ctxRegional, {
                 type: 'bar',
                 data: {
                     labels: ['SP-Cap', 'RJ-Cap', 'MG-BH', 'SPI-Camp', 'PR-Cur'],
@@ -625,13 +569,9 @@
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: {
-                        y: { grid: { color: 'rgba(120, 113, 156, 0.15)' } },
-                        x: { grid: { display: false } }
-                    }
+                    scales: { y: { grid: { color: 'rgba(120, 113, 156, 0.15)' } }, x: { grid: { display: false } } }
                 }
             });
 
@@ -665,7 +605,7 @@
                     labels: ['Comércio (RP)', 'Residência (RE)'],
                     datasets: [{ data: [29676, 26261], backgroundColor: [c4, c2], borderWidth: 0 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#1a103c', font: { weight: '600' } } }, tooltip: { callbacks: { label: function(context) { let label = context.label || ''; let value = context.raw || 0; let total = context.dataset.data.reduce((a, b) => a + b, 0); let pct = ((value / total) * 100).toFixed(1); return `${label}: ${value.toLocaleString('pt-BR')} (${pct}%)`; } } } } }
+                options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#1a103c', font: { weight: '600' } } } } }
             });
 
             const ctxClass = document.getElementById('classChart').getContext('2d');
@@ -678,15 +618,14 @@
                 options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } } }
             });
 
-            
             const ctxCheckin = document.getElementById('checkinChart').getContext('2d');
             checkinChart = new Chart(ctxCheckin, {
                 type: 'bar',
                 data: {
                     labels: baseData.checkinVendors.labels,
                     datasets: [
-                        { label: 'Com Check-in', data: baseData.checkinVendors.comCheckin, backgroundColor: c4, borderRadius: 4 },
-                        { label: 'Sem Check-in', data: baseData.checkinVendors.semCheckin, backgroundColor: c2, borderRadius: 4 }
+                        { label: 'Com Check-in', data: [...baseData.checkinVendors.comCheckin], backgroundColor: c4, borderRadius: 4 },
+                        { label: 'Sem Check-in', data: [...baseData.checkinVendors.semCheckin], backgroundColor: c2, borderRadius: 4 }
                     ]
                 },
                 options: {
@@ -715,7 +654,7 @@
                 type: 'bar',
                 data: {
                     labels: baseData.filial.top10Labels,
-                    datasets: [{ label: 'Vendedores', data: baseData.filial.top10Vend, backgroundColor: c4, borderRadius: 4 }]
+                    datasets: [{ label: 'Vendedores', data: [...baseData.filial.top10Vend], backgroundColor: c4, borderRadius: 4 }]
                 },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
@@ -726,12 +665,12 @@
                 data: {
                     labels: baseData.filial.top10Labels,
                     datasets: [
-                        { label: 'VET', data: baseData.filial.classVET, backgroundColor: c1 },
-                        { label: 'Líder/Coach', data: baseData.filial.classLider, backgroundColor: c2 },
-                        { label: 'M1 & M2', data: baseData.filial.classM1M2, backgroundColor: c3 },
-                        { label: 'M3 & M4', data: baseData.filial.classM3M4, backgroundColor: c4 },
-                        { label: 'M5 & M6', data: baseData.filial.classM5M6, backgroundColor: c5 },
-                        { label: 'M0', data: baseData.filial.classM0, backgroundColor: c6 }
+                        { label: 'VET', data: [...baseData.filial.classVET], backgroundColor: c1 },
+                        { label: 'Líder/Coach', data: [...baseData.filial.classLider], backgroundColor: c2 },
+                        { label: 'M1 & M2', data: [...baseData.filial.classM1M2], backgroundColor: c3 },
+                        { label: 'M3 & M4', data: [...baseData.filial.classM3M4], backgroundColor: c4 },
+                        { label: 'M5 & M6', data: [...baseData.filial.classM5M6], backgroundColor: c5 },
+                        { label: 'M0', data: [...baseData.filial.classM0], backgroundColor: c6 }
                     ]
                 },
                 options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true } }, plugins: { legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8 } } } }
@@ -742,9 +681,9 @@
                 type: 'doughnut',
                 data: {
                     labels: baseData.filial.tipoLabels,
-                    datasets: [{ data: baseData.filial.tipoData, backgroundColor: [c4, c2], borderWidth: 0 }]
+                    datasets: [{ data: [...baseData.filial.tipoData], backgroundColor: [c4, c2], borderWidth: 0 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#1a103c', font: { weight: '600' } } }, tooltip: { callbacks: { label: function(context) { let label = context.label || ''; let value = context.raw || 0; let total = context.dataset.data.reduce((a, b) => a + b, 0); let pct = ((value / total) * 100).toFixed(1); return `${label}: ${value.toLocaleString('pt-BR')} (${pct}%)`; } } } } }
+                options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#1a103c', font: { weight: '600' } } } } }
             });
 
             const ctxFilialCore = document.getElementById('filialCoreChart').getContext('2d');
@@ -752,9 +691,9 @@
                 type: 'doughnut',
                 data: {
                     labels: baseData.filial.coreLabels,
-                    datasets: [{ data: baseData.filial.coreData, backgroundColor: [c5, c3], borderWidth: 0 }]
+                    datasets: [{ data: [...baseData.filial.coreData], backgroundColor: [c5, c3], borderWidth: 0 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#1a103c', font: { weight: '600' } } }, tooltip: { callbacks: { label: function(context) { let label = context.label || ''; let value = context.raw || 0; let total = context.dataset.data.reduce((a, b) => a + b, 0); let pct = ((value / total) * 100).toFixed(1); return `${label}: ${value.toLocaleString('pt-BR')} (${pct}%)`; } } } } }
+                options: { responsive: true, maintainAspectRatio: false, cutout: '55%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, color: '#1a103c', font: { weight: '600' } } } } }
             });
         }
 
@@ -784,39 +723,64 @@
             const semFactor = parseFloat(document.getElementById('filter-sem').value);
             const factor = anoFactor * mesFactor * semFactor;
 
+            // Atualiza KPIs da Visão Geral
             document.getElementById('kpi1').innerText = (baseData.kpis.totalVendas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
             document.getElementById('kpi4').innerText = (baseData.kpis.visitas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
             document.getElementById('kpi-fte').innerText = (baseData.kpis.fte * (factor > 0.5 ? 1 : factor * 5)).toFixed(1);
             document.getElementById('kpi-vpp').innerText = (baseData.kpis.vpp * (factor === 1 ? 1 : 0.85)).toFixed(1);
             
+            // Atualiza KPIs da Filial
             document.getElementById('kpi-fil-1').innerText = Math.round(71 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-2').innerText = Math.round(1433 * factor).toLocaleString('pt-BR');
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
-
-            document.getElementById('dir-best-vol').innerText = Math.round(255 * factor);
-            document.getElementById('dir-peak-re').innerText = (3901 * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
-            document.getElementById('dir-weekly').innerText = (1577.8 * factor).toLocaleString('pt-BR', {maximumFractionDigits: 1});
-            document.getElementById('dir-proj').innerText = (5213 * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
 
             document.querySelectorAll('.kpi-value, .dynamic-val').forEach(el => {
                 el.style.opacity = 0;
                 setTimeout(() => el.style.opacity = 1, 200);
             });
 
-            mainChart.data.datasets[1].data = baseData.vendasRE.map(v => v * factor);
-            mainChart.data.datasets[2].data = baseData.vendasRP.map(v => v * factor);
+            // Atualiza Gráficos da Visão Geral
+            mainChart.data.datasets[1].data = baseData.vendasRE.map(v => Math.round(v * factor));
+            mainChart.data.datasets[2].data = baseData.vendasRP.map(v => Math.round(v * factor));
             mainChart.update();
 
-            topVendChart.data.datasets[0].data = baseData.topVendedores.data.map(v => v * factor);
+            produtoChart.data.datasets[0].data = [6167, 1864, 1250, 1049, 863].map(v => Math.round(v * factor));
+            produtoChart.data.datasets[1].data = [8713, 2028, 1231, 1376, 598].map(v => Math.round(v * factor));
+            produtoChart.update();
+
+            // Atualiza Gráficos da aba Vendedores
+            topVendChart.data.datasets[0].data = baseData.topVendedores.data.map(v => Math.round(v * factor));
             topVendChart.update();
 
-            donutChart.data.datasets[0].data = [29676 * factor, 26261 * factor];
+            checkinChart.data.datasets[0].data = baseData.checkinVendors.comCheckin.map(v => Math.round(v * factor));
+            checkinChart.data.datasets[1].data = baseData.checkinVendors.semCheckin.map(v => Math.round(v * factor));
+            checkinChart.update();
+
+            donutChart.data.datasets[0].data = [Math.round(29676 * factor), Math.round(26261 * factor)];
             donutChart.update();
             
             turnoverChart.data.datasets[1].data = baseData.admitidos.map(v => Math.round(v * factor));
             turnoverChart.data.datasets[2].data = baseData.demitidos.map(v => Math.round(v * factor));
             turnoverChart.update();
+
+            // Atualiza Gráficos da aba Filial
+            filialVendChart.data.datasets[0].data = baseData.filial.top10Vend.map(v => Math.round(v * factor));
+            filialVendChart.update();
+
+            filialClassChart.data.datasets[0].data = baseData.filial.classVET.map(v => Math.round(v * factor));
+            filialClassChart.data.datasets[1].data = baseData.filial.classLider.map(v => Math.round(v * factor));
+            filialClassChart.data.datasets[2].data = baseData.filial.classM1M2.map(v => Math.round(v * factor));
+            filialClassChart.data.datasets[3].data = baseData.filial.classM3M4.map(v => Math.round(v * factor));
+            filialClassChart.data.datasets[4].data = baseData.filial.classM5M6.map(v => Math.round(v * factor));
+            filialClassChart.data.datasets[5].data = baseData.filial.classM0.map(v => Math.round(v * factor));
+            filialClassChart.update();
+
+            filialTipoChart.data.datasets[0].data = baseData.filial.tipoData.map(v => Math.round(v * factor));
+            filialTipoChart.update();
+
+            filialCoreChart.data.datasets[0].data = baseData.filial.coreData.map(v => Math.round(v * factor));
+            filialCoreChart.update();
         }
 
         window.onload = initCharts;
