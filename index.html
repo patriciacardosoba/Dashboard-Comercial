@@ -284,23 +284,23 @@
                         <div style="display: flex; flex-direction: column; gap: 12px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #d946ef;">
                                 <span style="font-weight: 600; font-size: 13px;">📍 São Paulo (Capital e Região)</span>
-                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;">14.880 vendas (43.2%)</span>
+                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;" id="reg-sp">14.880 vendas (43.2%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #7c3aed;">
                                 <span style="font-weight: 600; font-size: 13px;">📍 Rio de Janeiro (Capital)</span>
-                                <span style="font-weight: 700; color: #a6d0e8; font-size: 14px;">3.892 vendas (11.3%)</span>
+                                <span style="font-weight: 700; color: #a6d0e8; font-size: 14px;" id="reg-rj">3.892 vendas (11.3%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #512da8;">
                                 <span style="font-weight: 600; font-size: 13px;">📍 Minas Gerais (Belo Horizonte)</span>
-                                <span style="font-weight: 700; color: #bfaee2; font-size: 14px;">2.481 vendas (7.2%)</span>
+                                <span style="font-weight: 700; color: #bfaee2; font-size: 14px;" id="reg-mg">2.481 vendas (7.2%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #3b70a2;">
                                 <span style="font-weight: 600; font-size: 13px;">📍 SPI - Campinas & Interior</span>
-                                <span style="font-weight: 700; color: #7db2d6; font-size: 14px;">2.425 vendas (7.0%)</span>
+                                <span style="font-weight: 700; color: #7db2d6; font-size: 14px;" id="reg-spi">2.425 vendas (7.0%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #ec4899;">
                                 <span style="font-weight: 600; font-size: 13px;">📍 PR - Curitiba & Sul</span>
-                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;">1.461 vendas (4.2%)</span>
+                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;" id="reg-pr">1.461 vendas (4.2%)</span>
                             </div>
                         </div>
                     </div>
@@ -504,6 +504,13 @@
             admitidos: [15, 12, 18, 14, 16, 20, 15, 17, 10, 15],
             demitidos: [10, 14, 12, 15, 13, 11, 16, 18, 12, 14],
             acumuladoVendas: [4800, 10400, 17000, 22400, 27800, 34500, 39200, 47000, 52800, 58171],
+            regioes: {
+                sp: 14880,
+                rj: 3892,
+                mg: 2481,
+                spi: 2425,
+                pr: 1461
+            },
             kpis: {
                 totalVendas: 58171, fte: 143.3, vpp: 40.5, vpprp: 18.9,
                 visitas: 95078, conversao: 32.6, checkin: 93.5, bpp: 66.3
@@ -765,6 +772,13 @@
             document.getElementById('kpi-fil-2').innerText = Math.round(1433 * factor).toLocaleString('pt-BR');
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
+
+            // Atualiza os valores do mapa de distribuição regional em texto
+            document.getElementById('reg-sp').innerText = `${Math.round(baseData.regioes.sp * factor).toLocaleString('pt-BR')} vendas (43.2%)`;
+            document.getElementById('reg-rj').innerText = `${Math.round(baseData.regioes.rj * factor).toLocaleString('pt-BR')} vendas (11.3%)`;
+            document.getElementById('reg-mg').innerText = `${Math.round(baseData.regioes.mg * factor).toLocaleString('pt-BR')} vendas (7.2%)`;
+            document.getElementById('reg-spi').innerText = `${Math.round(baseData.regioes.spi * factor).toLocaleString('pt-BR')} vendas (7.0%)`;
+            document.getElementById('reg-pr').innerText = `${Math.round(baseData.regioes.pr * factor).toLocaleString('pt-BR')} vendas (4.2%)`;
 
             document.querySelectorAll('.kpi-value, .dynamic-val').forEach(el => {
                 el.style.opacity = 0;
