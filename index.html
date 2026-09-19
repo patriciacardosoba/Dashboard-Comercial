@@ -70,7 +70,7 @@
         .header h1 { font-size: 24px; font-weight: 600; }
         .header p { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
         
-        .filters-container { display: flex; gap: 15px; align-items: center; background: var(--bg-surface); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); flex-wrap: wrap; }
+        .filters-container { display: flex; gap: 12px; align-items: center; background: var(--bg-surface); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--border-color); flex-wrap: wrap; }
         .filter-group { display: flex; flex-direction: column; gap: 6px; }
         .filter-group label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .filter-select { background-color: #faf5ff; border: 1px solid #f3e8ff; color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-size: 13px; outline: none; cursor: pointer; transition: 0.2s; min-width: 140px; }
@@ -131,9 +131,9 @@
                 <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
                 Filial
             </li>
-            <li class="nav-item" onclick="switchTab('diretoria', this)">
+            <li class="nav-item" onclick="switchTab('insights', this)">
                 <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-               Insights
+                Insights
             </li>
         </ul>
         <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
@@ -155,6 +155,39 @@
                 <p id="header-sub"></p>
             </div>
             <div class="filters-container">
+                <div class="filter-group">
+                    <label>Estado</label>
+                    <select class="filter-select" id="filter-estado" onchange="applyFilters()">
+                        <option value="1">Todos os Estados</option>
+                        <option value="0.01">Acre (AC)</option>
+                        <option value="0.01">Alagoas (AL)</option>
+                        <option value="0.01">Amapá (AP)</option>
+                        <option value="0.02">Amazonas (AM)</option>
+                        <option value="0.03">Bahia (BA)</option>
+                        <option value="0.02">Ceará (CE)</option>
+                        <option value="0.02">Distrito Federal (DF)</option>
+                        <option value="0.015">Espírito Santo (ES)</option>
+                        <option value="0.025">Goiás (GO)</option>
+                        <option value="0.015">Maranhão (MA)</option>
+                        <option value="0.02">Mato Grosso (MT)</option>
+                        <option value="0.015">Mato Grosso do Sul (MS)</option>
+                        <option value="0.072">Minas Gerais (MG)</option>
+                        <option value="0.02">Pará (PA)</option>
+                        <option value="0.01">Paraíba (PB)</option>
+                        <option value="0.042">Paraná (PR)</option>
+                        <option value="0.025">Pernambuco (PE)</option>
+                        <option value="0.01">Piauí (PI)</option>
+                        <option value="0.113">Rio de Janeiro (RJ)</option>
+                        <option value="0.01">Rio Grande do Norte (RN)</option>
+                        <option value="0.035">Rio Grande do Sul (RS)</option>
+                        <option value="0.01">Rondônia (RO)</option>
+                        <option value="0.005">Roraima (RR)</option>
+                        <option value="0.03">Santa Catarina (SC)</option>
+                        <option value="0.432">São Paulo (SP)</option>
+                        <option value="0.01">Sergipe (SE)</option>
+                        <option value="0.01">Tocantins (TO)</option>
+                    </select>
+                </div>
                 <div class="filter-group">
                     <label>Ano Comercial</label>
                     <select class="filter-select" id="filter-ano" onchange="applyFilters()">
@@ -440,9 +473,9 @@
             </div>
         </section>
 
-        <!-- ABA 4: DIRETORIA -->
-        <section id="diretoria" class="page">
-            <h2 style="margin-bottom: 20px;">Diretoria: Principais Insights</h2>
+        <!-- ABA 4: INSIGHTS -->
+        <section id="insights" class="page">
+            <h2 style="margin-bottom: 20px;">Painel de Insights Estratégicos</h2>
             <div class="insights-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 25px;">
                 <div class="insight-card" style="border-left-color: var(--blue-4);">
                     <h3>Crescimento Percentual (Vendas por Estabelecimento vs Mês Anterior)</h3>
@@ -482,7 +515,7 @@
             if(tabId === 'visao-geral') titleEl.innerText = 'Análise Geral';
             else if(tabId === 'vendedores') titleEl.innerText = 'Análise de Performance e Produtividade';
             else if(tabId === 'filial') titleEl.innerText = 'Análise Filial';
-            else if(tabId === 'diretoria') titleEl.innerText = 'Diretoria: Principais Insights';
+            else if(tabId === 'insights') titleEl.innerText = 'Painel de Insights Estratégicos';
         }
 
         Chart.defaults.color = '#1a103c';
@@ -758,10 +791,11 @@
         }
 
         function applyFilters() {
+            const estadoFactor = parseFloat(document.getElementById('filter-estado').value);
             const anoFactor = parseFloat(document.getElementById('filter-ano').value);
             const mesFactor = parseFloat(document.getElementById('filter-mes').value);
             const semFactor = parseFloat(document.getElementById('filter-sem').value);
-            const factor = anoFactor * mesFactor * semFactor;
+            const factor = estadoFactor * anoFactor * mesFactor * semFactor;
 
             document.getElementById('kpi1').innerText = (baseData.kpis.totalVendas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
             document.getElementById('kpi4').innerText = (baseData.kpis.visitas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
@@ -773,7 +807,6 @@
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
 
-            // Atualiza os valores do mapa de distribuição regional em texto
             document.getElementById('reg-sp').innerText = `${Math.round(baseData.regioes.sp * factor).toLocaleString('pt-BR')} vendas (43.2%)`;
             document.getElementById('reg-rj').innerText = `${Math.round(baseData.regioes.rj * factor).toLocaleString('pt-BR')} vendas (11.3%)`;
             document.getElementById('reg-mg').innerText = `${Math.round(baseData.regioes.mg * factor).toLocaleString('pt-BR')} vendas (7.2%)`;
