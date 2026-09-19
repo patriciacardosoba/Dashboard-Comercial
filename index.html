@@ -566,62 +566,13 @@
             }
         };
 
-        const stateHubs = {
-            'TODOS': { 
-                title: 'Praças de Atuação Comercial (Sudeste / Sul)', 
-                hubs: ['São Paulo (Capital e Região)', 'Rio de Janeiro (Capital)', 'Minas Gerais (Belo Horizonte)', 'SPI - Campinas & Interior', 'PR - Curitiba & Sul'],
-                shorts: ['SP-Cap', 'RJ-Cap', 'MG-BH', 'SPI-Camp', 'PR-Cur']
-            },
-            'SP': { 
-                title: 'Praças de Atuação em São Paulo (SP)', 
-                hubs: ['São Paulo (Capital)', 'Campinas & Interior', 'Ribeirão Preto', 'Santos & Litoral', 'São José dos Campos'],
-                shorts: ['SP-Cap', 'Campinas', 'Ribeirão', 'Santos', 'S.J. Campos']
-            },
-            'RJ': { 
-                title: 'Praças de Atuação no Rio de Janeiro (RJ)', 
-                hubs: ['Rio de Janeiro (Capital)', 'Niterói & São Gonçalo', 'Baixada Fluminense', 'Região dos Lagos', 'Volta Redonda'],
-                shorts: ['RJ-Cap', 'Niterói', 'Baixada', 'Lagos', 'V. Redonda']
-            },
-            'MG': { 
-                title: 'Praças de Atuação em Minas Gerais (MG)', 
-                hubs: ['Belo Horizonte (Capital)', 'Uberlândia', 'Contagem', 'Juiz de Fora', 'Betim'],
-                shorts: ['BH-Cap', 'Uberlândia', 'Contagem', 'J. de Fora', 'Betim']
-            },
-            'PR': { 
-                title: 'Praças de Atuação no Paraná (PR)', 
-                hubs: ['Curitiba (Capital)', 'Londrina', 'Maringá', 'Ponta Grossa', 'Cascavel'],
-                shorts: ['CWB-Cap', 'Londrina', 'Maringá', 'P. Grossa', 'Cascavel']
-            },
-            'RS': { 
-                title: 'Praças de Atuação no Rio Grande do Sul (RS)', 
-                hubs: ['Porto Alegre (Capital)', 'Caxias do Sul', 'Pelotas', 'Canoas', 'Santa Maria'],
-                shorts: ['POA-Cap', 'Caxias', 'Pelotas', 'Canoas', 'S. Maria']
-            },
-            'SC': { 
-                title: 'Praças de Atuação em Santa Catarina (SC)', 
-                hubs: ['Florianópolis (Capital)', 'Joinville', 'Blumenau', 'São José', 'Chapecó'],
-                shorts: ['FLN-Cap', 'Joinville', 'Blumenau', 'S. José', 'Chapecó']
-            },
-            'BA': { 
-                title: 'Praças de Atuação na Bahia (BA)', 
-                hubs: ['Salvador (Capital)', 'Feira de Santana', 'Vitória da Conquista', 'Camaçari', 'Itabuna'],
-                shorts: ['SSA-Cap', 'Feira', 'V. Conquista', 'Camaçari', 'Itabuna']
-            },
-            'GO': { 
-                title: 'Praças de Atuação em Goiás (GO)', 
-                hubs: ['Goiânia (Capital)', 'Aparecida de Goiânia', 'Anápolis', 'Rio Verde', 'Senador Canedo'],
-                shorts: ['GYN-Cap', 'Aparecida', 'Anápolis', 'Rio Verde', 'S. Canedo']
-            },
-            'PE': { 
-                title: 'Praças de Atuação em Pernambuco (PE)', 
-                hubs: ['Recife (Capital)', 'Jaboatão dos Guararapes', 'Olinda', 'Caruaru', 'Petrolina'],
-                shorts: ['REC-Cap', 'Jaboatão', 'Olinda', 'Caruaru', 'Petrolina']
-            },
-            'CE': { 
-                title: 'Praças de Atuação no Ceará (CE)', 
-                hubs: ['Fortaleza (Capital)', 'Caucaia', 'Maracanaú', 'Juazeiro do Norte', 'Sobral'],
-                shorts: ['FOR-Cap', 'Caucaia', 'Maracanaú', 'Juazeiro', 'Sobral']
-            }
+        const stateCapitals = {
+            'AC': 'Rio Branco', 'AL': 'Maceió', 'AP': 'Macapá', 'AM': 'Manaus', 'BA': 'Salvador',
+            'CE': 'Fortaleza', 'DF': 'Brasília', 'ES': 'Vitória', 'GO': 'Goiânia', 'MA': 'São Luís',
+            'MT': 'Cuiabá', 'MS': 'Campo Grande', 'MG': 'Belo Horizonte', 'PA': 'Belém', 'PB': 'João Pessoa',
+            'PR': 'Curitiba', 'PE': 'Recife', 'PI': 'Teresina', 'RJ': 'Rio de Janeiro', 'RN': 'Natal',
+            'RS': 'Porto Alegre', 'RO': 'Porto Velho', 'RR': 'Boa Vista', 'SC': 'Florianópolis', 'SP': 'São Paulo',
+            'SE': 'Aracaju', 'TO': 'Palmas'
         };
 
         let mainChart, regionalMapChart, produtoChart, saldoAcumuladoChart, topVendChart, donutChart, classChart, checkinChart, turnoverChart;
@@ -871,7 +822,7 @@
             const stateSelect = document.getElementById('filter-estado');
             const selectedStateCode = stateSelect.value;
             const stateFactor = parseFloat(stateSelect.options[stateSelect.selectedIndex].getAttribute('data-factor'));
-            const stateName = stateSelect.options[stateSelect.selectedIndex].text;
+            const stateFullName = stateSelect.options[stateSelect.selectedIndex].text;
 
             const anoFactor = parseFloat(document.getElementById('filter-ano').value);
             const mesFactor = parseFloat(document.getElementById('filter-mes').value);
@@ -888,13 +839,22 @@
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
 
-            // Configuração dos hubs de atuação do estado
-            const defaultShortName = stateName.split(' ')[0];
-            const currentHubData = stateHubs[selectedStateCode] || {
-                title: `Praças de Atuação em ${stateName}`,
-                hubs: [`${defaultShortName} (Capital)`, 'Região Metropolitana 1', 'Polo Comercial 2', 'Polo Industrial 3', 'Demais Municípios'],
-                shorts: [`${defaultShortName}-Cap`, 'Região 1', 'Polo 2', 'Polo 3', 'Outros']
-            };
+            let currentHubData;
+            if (selectedStateCode === 'TODOS') {
+                currentHubData = {
+                    title: 'Praças de Atuação Comercial (Sudeste / Sul)',
+                    hubs: ['São Paulo (Capital e Região)', 'Rio de Janeiro (Capital)', 'Minas Gerais (Belo Horizonte)', 'SPI - Campinas & Interior', 'PR - Curitiba & Sul'],
+                    shorts: ['SP-Cap', 'RJ-Cap', 'MG-BH', 'SPI-Camp', 'PR-Cur']
+                };
+            } else {
+                const capital = stateCapitals[selectedStateCode] || 'Capital';
+                const stateCleanName = stateFullName.split(' (')[0];
+                currentHubData = {
+                    title: `Praças de Atuação em ${stateFullName}`,
+                    hubs: [`${capital} (Capital)`, 'Região Metropolitana 1', 'Polo Comercial 2', 'Polo Industrial 3', 'Demais Municípios do Estado'],
+                    shorts: [`${capital}`, 'Região 1', 'Polo 2', 'Polo 3', 'Outros']
+                };
+            }
 
             document.getElementById('reg-card-title').innerHTML = `<span>🗺️</span> ${currentHubData.title}`;
 
@@ -929,12 +889,10 @@
             mainChart.data.datasets[2].data = baseData.vendasRP.map(v => Math.round(v * factor));
             mainChart.update();
 
-            // Sincroniza e atualiza o Gráfico Regional com os novos rótulos e valores
             regionalMapChart.data.labels = currentHubData.shorts;
             regionalMapChart.data.datasets[0].data = [v1, v2, v3, v4, v5];
             regionalMapChart.update();
 
-            // Sincroniza e atualiza o Gráfico de Estabelecimento (Residência vs Comércio)
             produtoChart.data.labels = currentHubData.shorts;
             produtoChart.data.datasets[0].data = [Math.round(v1*0.48), Math.round(v2*0.48), Math.round(v3*0.48), Math.round(v4*0.48), Math.round(v5*0.48)];
             produtoChart.data.datasets[1].data = [Math.round(v1*0.52), Math.round(v2*0.52), Math.round(v3*0.52), Math.round(v4*0.52), Math.round(v5*0.52)];
