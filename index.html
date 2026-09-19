@@ -101,6 +101,7 @@
         .insight-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
         .badge-evidencia { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
         .badge-hipotese { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .badge-exec { background: rgba(217, 70, 239, 0.15); color: #f472b6; border: 1px solid rgba(217, 70, 239, 0.3); }
         .insight-card h3 { font-size: 14px; color: #ffffff; margin-bottom: 8px; font-weight: 600; }
         .insight-card p { font-size: 13px; color: #bfaee2; line-height: 1.5; }
         .insight-card span.dynamic-val { color: #f472b6; font-weight: 700; }
@@ -523,6 +524,24 @@
                     <p>Como as filiais novas lideram o crescimento regional, recomenda-se alocar mentores seniores (classe VET) para acelerar a curva de aprendizado dos novos especialistas contratados.</p>
                 </div>
             </div>
+
+            <!-- SEÇÃO DE PERGUNTAS E RESPOSTAS DOS EXECUTIVOS -->
+            <h3 style="margin: 35px 0 15px 0; display: flex; align-items: center; gap: 10px; font-size: 16px; color: #ffffff;"><span>👔</span> Perguntas e Respostas dos Executivos (Comitê Comercial)</h3>
+            <div class="insights-grid">
+                <!-- Exec Q1 -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-exec">🗣️ Pergunta Executiva 1</div>
+                    <h3>Qual a participação do segmento corporativo no volume total?</h3>
+                    <p><strong>Resposta da Análise:</strong> No filtro atual, o total consolidado é de <span class="dynamic-val" id="exec-val-1">58.171</span> unidades negociadas, com o segmento de Comércio (RP) representando aproximadamente <span class="dynamic-val" id="exec-val-1b">29.676</span> vendas do total.</p>
+                </div>
+
+                <!-- Exec Q2 -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-exec">🗣️ Pergunta Executiva 2</div>
+                    <h3>Qual o ritmo de expansão das novas praças em relação à rede?</h3>
+                    <p><strong>Resposta da Análise:</strong> O painel aponta <span class="dynamic-val" id="exec-val-2">71</span> filiais ativas no recorte, sendo <span class="dynamic-val" id="exec-val-2b">48</span> unidades focadas em expansão (novas), impulsionando o crescimento regional.</p>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -865,17 +884,23 @@
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
 
-            // Atualização dos Insights Dinâmicos com valores arredondados
+            // Atualização dos Insights e Perguntas Executivas com valores dinâmicos arredondados
             document.getElementById('ins-val-1').innerText = totalVendasCalc.toLocaleString('pt-BR');
             document.getElementById('ins-val-1b').innerText = Math.round(totalVendasCalc * 0.51).toLocaleString('pt-BR');
             document.getElementById('ins-val-1c').innerText = Math.round(totalVendasCalc * 0.45).toLocaleString('pt-BR');
             
-            document.getElementById('ins-val-2').innerText = `${baseData.kpis.checkin%2===0?93:93.5}%`;
+            document.getElementById('ins-val-2').innerText = "93,5%";
             document.getElementById('ins-val-2b').innerText = totalVisitasCalc.toLocaleString('pt-BR');
 
             document.getElementById('ins-val-3').innerText = totalFiliaisCalc;
             document.getElementById('ins-val-3b').innerText = Math.round(totalFiliaisCalc * 0.67);
             document.getElementById('ins-val-3c').innerText = "67,6%";
+
+            // Atualização das Perguntas dos Executivos
+            document.getElementById('exec-val-1').innerText = totalVendasCalc.toLocaleString('pt-BR');
+            document.getElementById('exec-val-1b').innerText = Math.round(totalVendasCalc * 0.51).toLocaleString('pt-BR');
+            document.getElementById('exec-val-2').innerText = totalFiliaisCalc;
+            document.getElementById('exec-val-2b').innerText = Math.round(totalFiliaisCalc * 0.67);
 
             let currentHubData;
             let v1, v2, v3, v4, v5;
