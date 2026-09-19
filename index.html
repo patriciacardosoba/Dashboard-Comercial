@@ -158,34 +158,34 @@
                 <div class="filter-group">
                     <label>Estado</label>
                     <select class="filter-select" id="filter-estado" onchange="applyFilters()">
-                        <option value="1">Todos os Estados</option>
-                        <option value="0.01">Acre (AC)</option>
-                        <option value="0.01">Alagoas (AL)</option>
-                        <option value="0.01">Amapá (AP)</option>
-                        <option value="0.02">Amazonas (AM)</option>
-                        <option value="0.03">Bahia (BA)</option>
-                        <option value="0.02">Ceará (CE)</option>
-                        <option value="0.02">Distrito Federal (DF)</option>
-                        <option value="0.015">Espírito Santo (ES)</option>
-                        <option value="0.025">Goiás (GO)</option>
-                        <option value="0.015">Maranhão (MA)</option>
-                        <option value="0.02">Mato Grosso (MT)</option>
-                        <option value="0.015">Mato Grosso do Sul (MS)</option>
-                        <option value="0.072">Minas Gerais (MG)</option>
-                        <option value="0.02">Pará (PA)</option>
-                        <option value="0.01">Paraíba (PB)</option>
-                        <option value="0.042">Paraná (PR)</option>
-                        <option value="0.025">Pernambuco (PE)</option>
-                        <option value="0.01">Piauí (PI)</option>
-                        <option value="0.113">Rio de Janeiro (RJ)</option>
-                        <option value="0.01">Rio Grande do Norte (RN)</option>
-                        <option value="0.035">Rio Grande do Sul (RS)</option>
-                        <option value="0.01">Rondônia (RO)</option>
-                        <option value="0.005">Roraima (RR)</option>
-                        <option value="0.03">Santa Catarina (SC)</option>
-                        <option value="0.432">São Paulo (SP)</option>
-                        <option value="0.01">Sergipe (SE)</option>
-                        <option value="0.01">Tocantins (TO)</option>
+                        <option value="TODOS" data-factor="1">Todos os Estados</option>
+                        <option value="AC" data-factor="0.01">Acre (AC)</option>
+                        <option value="AL" data-factor="0.01">Alagoas (AL)</option>
+                        <option value="AP" data-factor="0.01">Amapá (AP)</option>
+                        <option value="AM" data-factor="0.02">Amazonas (AM)</option>
+                        <option value="BA" data-factor="0.03">Bahia (BA)</option>
+                        <option value="CE" data-factor="0.02">Ceará (CE)</option>
+                        <option value="DF" data-factor="0.02">Distrito Federal (DF)</option>
+                        <option value="ES" data-factor="0.015">Espírito Santo (ES)</option>
+                        <option value="GO" data-factor="0.025">Goiás (GO)</option>
+                        <option value="MA" data-factor="0.015">Maranhão (MA)</option>
+                        <option value="MT" data-factor="0.02">Mato Grosso (MT)</option>
+                        <option value="MS" data-factor="0.015">Mato Grosso do Sul (MS)</option>
+                        <option value="MG" data-factor="0.072">Minas Gerais (MG)</option>
+                        <option value="PA" data-factor="0.02">Pará (PA)</option>
+                        <option value="PB" data-factor="0.01">Paraíba (PB)</option>
+                        <option value="PR" data-factor="0.042">Paraná (PR)</option>
+                        <option value="PE" data-factor="0.025">Pernambuco (PE)</option>
+                        <option value="PI" data-factor="0.01">Piauí (PI)</option>
+                        <option value="RJ" data-factor="0.113">Rio de Janeiro (RJ)</option>
+                        <option value="RN" data-factor="0.01">Rio Grande do Norte (RN)</option>
+                        <option value="RS" data-factor="0.035">Rio Grande do Sul (RS)</option>
+                        <option value="RO" data-factor="0.01">Rondônia (RO)</option>
+                        <option value="RR" data-factor="0.005">Roraima (RR)</option>
+                        <option value="SC" data-factor="0.03">Santa Catarina (SC)</option>
+                        <option value="SP" data-factor="0.432">São Paulo (SP)</option>
+                        <option value="SE" data-factor="0.01">Sergipe (SE)</option>
+                        <option value="TO" data-factor="0.01">Tocantins (TO)</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -311,29 +311,29 @@
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0;">
                     <div style="background: linear-gradient(135deg, #261c4c 0%, #1a103c 100%); border-radius: 12px; padding: 20px; color: white; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(124,58,237,0.15);">
-                        <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px; color: #f472b6; display: flex; align-items: center; gap: 8px;">
+                        <div id="reg-card-title" style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px; color: #f472b6; display: flex; align-items: center; gap: 8px;">
                             <span>🗺️</span> Praças de Atuação Comercial (Sudeste / Sul)
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 12px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #d946ef;">
-                                <span style="font-weight: 600; font-size: 13px;">📍 São Paulo (Capital e Região)</span>
-                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;" id="reg-sp">14.880 vendas (43.2%)</span>
+                                <span style="font-weight: 600; font-size: 13px;" id="label-hub-1">📍 São Paulo (Capital e Região)</span>
+                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;" id="val-hub-1">14.880 vendas (43.2%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #7c3aed;">
-                                <span style="font-weight: 600; font-size: 13px;">📍 Rio de Janeiro (Capital)</span>
-                                <span style="font-weight: 700; color: #a6d0e8; font-size: 14px;" id="reg-rj">3.892 vendas (11.3%)</span>
+                                <span style="font-weight: 600; font-size: 13px;" id="label-hub-2">📍 Rio de Janeiro (Capital)</span>
+                                <span style="font-weight: 700; color: #a6d0e8; font-size: 14px;" id="val-hub-2">3.892 vendas (11.3%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #512da8;">
-                                <span style="font-weight: 600; font-size: 13px;">📍 Minas Gerais (Belo Horizonte)</span>
-                                <span style="font-weight: 700; color: #bfaee2; font-size: 14px;" id="reg-mg">2.481 vendas (7.2%)</span>
+                                <span style="font-weight: 600; font-size: 13px;" id="label-hub-3">📍 Minas Gerais (Belo Horizonte)</span>
+                                <span style="font-weight: 700; color: #bfaee2; font-size: 14px;" id="val-hub-3">2.481 vendas (7.2%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #3b70a2;">
-                                <span style="font-weight: 600; font-size: 13px;">📍 SPI - Campinas & Interior</span>
-                                <span style="font-weight: 700; color: #7db2d6; font-size: 14px;" id="reg-spi">2.425 vendas (7.0%)</span>
+                                <span style="font-weight: 600; font-size: 13px;" id="label-hub-4">📍 SPI - Campinas & Interior</span>
+                                <span style="font-weight: 700; color: #7db2d6; font-size: 14px;" id="val-hub-4">2.425 vendas (7.0%)</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.06); padding: 10px 14px; border-radius: 8px; border-left: 3px solid #ec4899;">
-                                <span style="font-weight: 600; font-size: 13px;">📍 PR - Curitiba & Sul</span>
-                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;" id="reg-pr">1.461 vendas (4.2%)</span>
+                                <span style="font-weight: 600; font-size: 13px;" id="label-hub-5">📍 PR - Curitiba & Sul</span>
+                                <span style="font-weight: 700; color: #f472b6; font-size: 14px;" id="val-hub-5">1.461 vendas (4.2%)</span>
                             </div>
                         </div>
                     </div>
@@ -537,13 +537,6 @@
             admitidos: [15, 12, 18, 14, 16, 20, 15, 17, 10, 15],
             demitidos: [10, 14, 12, 15, 13, 11, 16, 18, 12, 14],
             acumuladoVendas: [4800, 10400, 17000, 22400, 27800, 34500, 39200, 47000, 52800, 58171],
-            regioes: {
-                sp: 14880,
-                rj: 3892,
-                mg: 2481,
-                spi: 2425,
-                pr: 1461
-            },
             kpis: {
                 totalVendas: 58171, fte: 143.3, vpp: 40.5, vpprp: 18.9,
                 visitas: 95078, conversao: 32.6, checkin: 93.5, bpp: 66.3
@@ -573,6 +566,64 @@
             }
         };
 
+        const stateHubs = {
+            'TODOS': { 
+                title: 'Praças de Atuação Comercial (Sudeste / Sul)', 
+                hubs: ['São Paulo (Capital e Região)', 'Rio de Janeiro (Capital)', 'Minas Gerais (Belo Horizonte)', 'SPI - Campinas & Interior', 'PR - Curitiba & Sul'],
+                shorts: ['SP-Cap', 'RJ-Cap', 'MG-BH', 'SPI-Camp', 'PR-Cur']
+            },
+            'SP': { 
+                title: 'Praças de Atuação em São Paulo (SP)', 
+                hubs: ['São Paulo (Capital)', 'Campinas & Interior', 'Ribeirão Preto', 'Santos & Litoral', 'São José dos Campos'],
+                shorts: ['SP-Cap', 'Campinas', 'Ribeirão', 'Santos', 'S.J. Campos']
+            },
+            'RJ': { 
+                title: 'Praças de Atuação no Rio de Janeiro (RJ)', 
+                hubs: ['Rio de Janeiro (Capital)', 'Niterói & São Gonçalo', 'Baixada Fluminense', 'Região dos Lagos', 'Volta Redonda'],
+                shorts: ['RJ-Cap', 'Niterói', 'Baixada', 'Lagos', 'V. Redonda']
+            },
+            'MG': { 
+                title: 'Praças de Atuação em Minas Gerais (MG)', 
+                hubs: ['Belo Horizonte (Capital)', 'Uberlândia', 'Contagem', 'Juiz de Fora', 'Betim'],
+                shorts: ['BH-Cap', 'Uberlândia', 'Contagem', 'J. de Fora', 'Betim']
+            },
+            'PR': { 
+                title: 'Praças de Atuação no Paraná (PR)', 
+                hubs: ['Curitiba (Capital)', 'Londrina', 'Maringá', 'Ponta Grossa', 'Cascavel'],
+                shorts: ['CWB-Cap', 'Londrina', 'Maringá', 'P. Grossa', 'Cascavel']
+            },
+            'RS': { 
+                title: 'Praças de Atuação no Rio Grande do Sul (RS)', 
+                hubs: ['Porto Alegre (Capital)', 'Caxias do Sul', 'Pelotas', 'Canoas', 'Santa Maria'],
+                shorts: ['POA-Cap', 'Caxias', 'Pelotas', 'Canoas', 'S. Maria']
+            },
+            'SC': { 
+                title: 'Praças de Atuação em Santa Catarina (SC)', 
+                hubs: ['Florianópolis (Capital)', 'Joinville', 'Blumenau', 'São José', 'Chapecó'],
+                shorts: ['FLN-Cap', 'Joinville', 'Blumenau', 'S. José', 'Chapecó']
+            },
+            'BA': { 
+                title: 'Praças de Atuação na Bahia (BA)', 
+                hubs: ['Salvador (Capital)', 'Feira de Santana', 'Vitória da Conquista', 'Camaçari', 'Itabuna'],
+                shorts: ['SSA-Cap', 'Feira', 'V. Conquista', 'Camaçari', 'Itabuna']
+            },
+            'GO': { 
+                title: 'Praças de Atuação em Goiás (GO)', 
+                hubs: ['Goiânia (Capital)', 'Aparecida de Goiânia', 'Anápolis', 'Rio Verde', 'Senador Canedo'],
+                shorts: ['GYN-Cap', 'Aparecida', 'Anápolis', 'Rio Verde', 'S. Canedo']
+            },
+            'PE': { 
+                title: 'Praças de Atuação em Pernambuco (PE)', 
+                hubs: ['Recife (Capital)', 'Jaboatão dos Guararapes', 'Olinda', 'Caruaru', 'Petrolina'],
+                shorts: ['REC-Cap', 'Jaboatão', 'Olinda', 'Caruaru', 'Petrolina']
+            },
+            'CE': { 
+                title: 'Praças de Atuação no Ceará (CE)', 
+                hubs: ['Fortaleza (Capital)', 'Caucaia', 'Maracanaú', 'Juazeiro do Norte', 'Sobral'],
+                shorts: ['FOR-Cap', 'Caucaia', 'Maracanaú', 'Juazeiro', 'Sobral']
+            }
+        };
+
         let mainChart, regionalMapChart, produtoChart, saldoAcumuladoChart, topVendChart, donutChart, classChart, checkinChart, turnoverChart;
         let filialVendChart, filialClassChart, filialTipoChart, filialCoreChart;
 
@@ -592,7 +643,7 @@
                     responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
                     plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } },
                     scales: {
-                        y: { type: 'linear', display: true, position: 'left' },
+                        y: { beginAtZero: true, type: 'linear', display: true, position: 'left' },
                         y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false }, min: 0, max: 100 }
                     }
                 }
@@ -613,7 +664,10 @@
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { y: { grid: { color: 'rgba(120, 113, 156, 0.15)' } }, x: { grid: { display: false } } }
+                    scales: { 
+                        y: { beginAtZero: true, grid: { color: 'rgba(120, 113, 156, 0.15)' } }, 
+                        x: { grid: { display: false } } 
+                    }
                 }
             });
 
@@ -627,7 +681,14 @@
                         { label: 'Comércio', data: [8713, 2028, 1231, 1376, 598], backgroundColor: c4, borderRadius: 4 }
                     ]
                 },
-                options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', scales: { x: { stacked: true }, y: { stacked: true } }, plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } } }
+                options: { 
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y', 
+                    scales: { 
+                        x: { beginAtZero: true, stacked: true }, 
+                        y: { stacked: true } 
+                    }, 
+                    plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } } 
+                }
             });
 
             const ctxSaldo = document.getElementById('saldoAcumuladoChart').getContext('2d');
@@ -655,7 +716,7 @@
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        y: { grid: { color: 'rgba(120, 113, 156, 0.15)' } },
+                        y: { beginAtZero: true, grid: { color: 'rgba(120, 113, 156, 0.15)' } },
                         x: { grid: { display: false } }
                     }
                 }
@@ -668,7 +729,11 @@
                     labels: baseData.topVendedores.labels,
                     datasets: [{ label: 'Fechamentos Individuais', data: [...baseData.topVendedores.data], backgroundColor: c3, borderRadius: 4 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                options: { 
+                    responsive: true, maintainAspectRatio: false, 
+                    scales: { y: { beginAtZero: true } },
+                    plugins: { legend: { display: false } } 
+                }
             });
 
             const ctxDonut = document.getElementById('donutChart').getContext('2d');
@@ -688,7 +753,11 @@
                     labels: ['VET', 'LÍDER', 'M2', 'M1', 'M4', 'M3', 'M5', 'M6', 'M0', 'ELITE'],
                     datasets: [{ label: 'Especialistas', data: [549, 260, 203, 195, 132, 124, 108, 72, 34, 4], backgroundColor: c5, borderRadius: 4 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } } }
+                options: { 
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y', 
+                    scales: { x: { beginAtZero: true } },
+                    plugins: { legend: { display: false } } 
+                }
             });
 
             const ctxCheckin = document.getElementById('checkinChart').getContext('2d');
@@ -703,7 +772,7 @@
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false,
-                    scales: { x: { stacked: true }, y: { stacked: true } },
+                    scales: { x: { stacked: true }, y: { beginAtZero: true, stacked: true } },
                     plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } }
                 }
             });
@@ -719,7 +788,11 @@
                         { type: 'bar', label: 'Demitidos', data: [...baseData.demitidos], backgroundColor: c5, borderRadius: 4 }
                     ]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } } }
+                options: { 
+                    responsive: true, maintainAspectRatio: false, 
+                    scales: { y: { beginAtZero: true } },
+                    plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } } 
+                }
             });
 
             const ctxFilialVend = document.getElementById('filialVendChart').getContext('2d');
@@ -729,7 +802,11 @@
                     labels: baseData.filial.top10Labels,
                     datasets: [{ label: 'Vendedores', data: [...baseData.filial.top10Vend], backgroundColor: c4, borderRadius: 4 }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                options: { 
+                    responsive: true, maintainAspectRatio: false, 
+                    scales: { y: { beginAtZero: true } },
+                    plugins: { legend: { display: false } } 
+                }
             });
 
             const ctxFilialClass = document.getElementById('filialClassChart').getContext('2d');
@@ -746,7 +823,7 @@
                         { label: 'M0', data: [...baseData.filial.classM0], backgroundColor: c6 }
                     ]
                 },
-                options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true } }, plugins: { legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8 } } } }
+                options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { beginAtZero: true, stacked: true } }, plugins: { legend: { position: 'right', labels: { usePointStyle: true, boxWidth: 8 } } } }
             });
 
             const ctxFilialTipo = document.getElementById('filialTipoChart').getContext('2d');
@@ -791,11 +868,15 @@
         }
 
         function applyFilters() {
-            const estadoFactor = parseFloat(document.getElementById('filter-estado').value);
+            const stateSelect = document.getElementById('filter-estado');
+            const selectedStateCode = stateSelect.value;
+            const stateFactor = parseFloat(stateSelect.options[stateSelect.selectedIndex].getAttribute('data-factor'));
+            const stateName = stateSelect.options[stateSelect.selectedIndex].text;
+
             const anoFactor = parseFloat(document.getElementById('filter-ano').value);
             const mesFactor = parseFloat(document.getElementById('filter-mes').value);
             const semFactor = parseFloat(document.getElementById('filter-sem').value);
-            const factor = estadoFactor * anoFactor * mesFactor * semFactor;
+            const factor = stateFactor * anoFactor * mesFactor * semFactor;
 
             document.getElementById('kpi1').innerText = (baseData.kpis.totalVendas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
             document.getElementById('kpi4').innerText = (baseData.kpis.visitas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
@@ -807,11 +888,37 @@
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
 
-            document.getElementById('reg-sp').innerText = `${Math.round(baseData.regioes.sp * factor).toLocaleString('pt-BR')} vendas (43.2%)`;
-            document.getElementById('reg-rj').innerText = `${Math.round(baseData.regioes.rj * factor).toLocaleString('pt-BR')} vendas (11.3%)`;
-            document.getElementById('reg-mg').innerText = `${Math.round(baseData.regioes.mg * factor).toLocaleString('pt-BR')} vendas (7.2%)`;
-            document.getElementById('reg-spi').innerText = `${Math.round(baseData.regioes.spi * factor).toLocaleString('pt-BR')} vendas (7.0%)`;
-            document.getElementById('reg-pr').innerText = `${Math.round(baseData.regioes.pr * factor).toLocaleString('pt-BR')} vendas (4.2%)`;
+            // Configuração dos hubs de atuação do estado
+            const defaultShortName = stateName.split(' ')[0];
+            const currentHubData = stateHubs[selectedStateCode] || {
+                title: `Praças de Atuação em ${stateName}`,
+                hubs: [`${defaultShortName} (Capital)`, 'Região Metropolitana 1', 'Polo Comercial 2', 'Polo Industrial 3', 'Demais Municípios'],
+                shorts: [`${defaultShortName}-Cap`, 'Região 1', 'Polo 2', 'Polo 3', 'Outros']
+            };
+
+            document.getElementById('reg-card-title').innerHTML = `<span>🗺️</span> ${currentHubData.title}`;
+
+            const totalStateSales = baseData.kpis.totalVendas * factor;
+            const v1 = Math.round(totalStateSales * 0.50);
+            const v2 = Math.round(totalStateSales * 0.22);
+            const v3 = Math.round(totalStateSales * 0.15);
+            const v4 = Math.round(totalStateSales * 0.08);
+            const v5 = Math.round(totalStateSales * 0.05);
+
+            document.getElementById('label-hub-1').innerText = `📍 ${currentHubData.hubs[0]}`;
+            document.getElementById('val-hub-1').innerText = `${v1.toLocaleString('pt-BR')} vendas (50.0%)`;
+
+            document.getElementById('label-hub-2').innerText = `📍 ${currentHubData.hubs[1]}`;
+            document.getElementById('val-hub-2').innerText = `${v2.toLocaleString('pt-BR')} vendas (22.0%)`;
+
+            document.getElementById('label-hub-3').innerText = `📍 ${currentHubData.hubs[2]}`;
+            document.getElementById('val-hub-3').innerText = `${v3.toLocaleString('pt-BR')} vendas (15.0%)`;
+
+            document.getElementById('label-hub-4').innerText = `📍 ${currentHubData.hubs[3]}`;
+            document.getElementById('val-hub-4').innerText = `${v4.toLocaleString('pt-BR')} vendas (8.0%)`;
+
+            document.getElementById('label-hub-5').innerText = `📍 ${currentHubData.hubs[4]}`;
+            document.getElementById('val-hub-5').innerText = `${v5.toLocaleString('pt-BR')} vendas (5.0%)`;
 
             document.querySelectorAll('.kpi-value, .dynamic-val').forEach(el => {
                 el.style.opacity = 0;
@@ -822,8 +929,15 @@
             mainChart.data.datasets[2].data = baseData.vendasRP.map(v => Math.round(v * factor));
             mainChart.update();
 
-            produtoChart.data.datasets[0].data = [6167, 1864, 1250, 1049, 863].map(v => Math.round(v * factor));
-            produtoChart.data.datasets[1].data = [8713, 2028, 1231, 1376, 598].map(v => Math.round(v * factor));
+            // Sincroniza e atualiza o Gráfico Regional com os novos rótulos e valores
+            regionalMapChart.data.labels = currentHubData.shorts;
+            regionalMapChart.data.datasets[0].data = [v1, v2, v3, v4, v5];
+            regionalMapChart.update();
+
+            // Sincroniza e atualiza o Gráfico de Estabelecimento (Residência vs Comércio)
+            produtoChart.data.labels = currentHubData.shorts;
+            produtoChart.data.datasets[0].data = [Math.round(v1*0.48), Math.round(v2*0.48), Math.round(v3*0.48), Math.round(v4*0.48), Math.round(v5*0.48)];
+            produtoChart.data.datasets[1].data = [Math.round(v1*0.52), Math.round(v2*0.52), Math.round(v3*0.52), Math.round(v4*0.52), Math.round(v5*0.52)];
             produtoChart.update();
 
             saldoAcumuladoChart.data.datasets[0].data = baseData.acumuladoVendas.map(v => Math.round(v * factor));
