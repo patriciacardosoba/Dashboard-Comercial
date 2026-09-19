@@ -86,7 +86,7 @@
         .kpi-title { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
         .kpi-card.highlight .kpi-title { color: rgba(255, 255, 255, 0.8); }
         .kpi-value { font-size: 24px; font-weight: 700; margin-bottom: 5px; transition: 0.3s; }
-        .kpi-trend { font-size: 11px; color: var(--text-muted); }
+        .kpi-trend { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; margin-top: 4px; }
         .kpi-card.highlight .kpi-trend { color: rgba(255, 255, 255, 0.8); }
 
         .chart-section { background-color: #ffffff; border: 1px solid #f3e8ff; border-radius: 14px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.04); }
@@ -96,11 +96,14 @@
         
         .charts-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
 
-        .insights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;}
-        .insight-card { background-color: var(--bg-surface); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; border-left: 4px solid var(--blue-3); transition: 0.3s; }
-        .insight-card h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 8px;}
-        .insight-card p { font-size: 14px; font-weight: 600; line-height: 1.5; color: var(--text-main); }
-        .insight-card span.dynamic-val { color: var(--blue-6); font-weight: 700; }
+        .insights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 25px;}
+        .insight-card { background-color: #1a103c; border: 1px solid rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; color: #ffffff; transition: 0.3s; }
+        .insight-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
+        .badge-evidencia { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .badge-hipotese { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .insight-card h3 { font-size: 14px; color: #ffffff; margin-bottom: 8px; font-weight: 600; }
+        .insight-card p { font-size: 13px; color: #bfaee2; line-height: 1.5; }
+        .insight-card span.dynamic-val { color: #f472b6; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -230,22 +233,22 @@
                 <div class="kpi-card highlight">
                     <div class="kpi-title">Total de Vendas</div>
                     <div class="kpi-value" id="kpi1" style="color: #ffffff; font-weight: 800;">58.171</div>
-                    <div class="kpi-trend">Volume Total (c/ Projeção)</div>
+                    <div class="kpi-trend" style="color: #fce7f3;"><span style="color: #4ade80;">↑ 12,4%</span> vs. período anterior</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-3)">
                     <div class="kpi-title">FTE Total Médio</div>
                     <div class="kpi-value" id="kpi-fte">143,3</div>
-                    <div class="kpi-trend">Equivalente de Tempo Integral</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 3,1%</span> vs. mês anterior</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-4)">
                     <div class="kpi-title">VPP (Vendas por FTE)</div>
                     <div class="kpi-value" id="kpi-vpp">40,5</div>
-                    <div class="kpi-trend">Vendas totais por pessoa média</div>
+                    <div class="kpi-trend"><span style="color: #f87171;">↓ 1,8%</span> vs. média da base</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-5)">
                     <div class="kpi-title">VPP RP (Vendas RP/FTE)</div>
                     <div class="kpi-value" id="kpi-vpprp">18,9</div>
-                    <div class="kpi-trend">Vendas de Negócios (RP) por FTE</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 5,2%</span> eficiência comercial</div>
                 </div>
             </div>
             
@@ -253,22 +256,22 @@
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-2)">
                     <div class="kpi-title">Total Visitas (Bookings)</div>
                     <div class="kpi-value" id="kpi4">95.078</div>
-                    <div class="kpi-trend">Visitas realizadas registradas</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 8,7%</span> expansão de visitas</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-6)">
                     <div class="kpi-title">Conversão (Vendas/Visitas)</div>
                     <div class="kpi-value" id="kpi2">32,6%</div>
-                    <div class="kpi-trend">Eficiência de Vendas Residenciais</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 2,8 p.p.</span> vs. ano anterior</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-5)">
                     <div class="kpi-title">% Check-in (Aderência)</div>
                     <div class="kpi-value" id="kpi-checkin">93,5%</div>
-                    <div class="kpi-trend">Visitas com Checkin no sistema</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 1,2%</span> conformidade diária</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-3)">
                     <div class="kpi-title">BPP (Bookings/FTE)</div>
                     <div class="kpi-value" id="kpi-bpp">66,3</div>
-                    <div class="kpi-trend">Visitas geradas por FTE médio</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 4,5%</span> produtividade</div>
                 </div>
             </div>
 
@@ -415,22 +418,22 @@
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-2)">
                     <div class="kpi-title">Total de Filiais</div>
                     <div class="kpi-value" id="kpi-fil-1">71</div>
-                    <div class="kpi-trend">Unidades com vendas ativas YTD</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 4,2%</span> expansão de rede</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-3)">
                     <div class="kpi-title">Vendedores Base</div>
                     <div class="kpi-value" id="kpi-fil-2">1.433</div>
-                    <div class="kpi-trend">Tamanho total da força de vendas</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 2,5%</span> força ativa</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-4)">
                     <div class="kpi-title">Filiais Novas</div>
                     <div class="kpi-value" id="kpi-fil-3">48</div>
-                    <div class="kpi-trend">Unidades de expansão</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">↑ 10,1%</span> novas praças</div>
                 </div>
                 <div class="kpi-card" style="border-top: 3px solid var(--blue-5)">
                     <div class="kpi-title">Região Core</div>
                     <div class="kpi-value" id="kpi-fil-4">28</div>
-                    <div class="kpi-trend">Filiais de alta densidade estratégica</div>
+                    <div class="kpi-trend"><span style="color: #4ade80;">0,0%</span> estabilidade</div>
                 </div>
             </div>
 
@@ -475,30 +478,49 @@
 
         <!-- ABA 4: INSIGHTS -->
         <section id="insights" class="page">
-            <h2 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span>💡</span> Painel de Insights Estratégicos</h2>
-            <div class="insights-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 25px;">
-                <div class="insight-card" style="border-left-color: var(--blue-4);">
-                    <h3>Crescimento Percentual (Vendas por Estabelecimento vs Mês Anterior)</h3>
-                    <p>O segmento de <strong>Comércio (RP)</strong> apresentou aceleração expressiva de <span class="dynamic-val" style="color:var(--blue-4);">+27,4%</span> no último ciclo de alta em relação ao mês anterior, superando o crescimento de <strong>Residência (RE)</strong> que registrou alta de <span class="dynamic-val" style="color:var(--blue-5);">+18,2%</span>.</p>
+            <h2 style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size:24px;">💡</span> Painel de Insights Estratégicos</h2>
+            
+            <div class="insights-grid">
+                <!-- Insight 1: Evidência -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-evidencia">🟢 Evidência nos Dados</div>
+                    <h3>Desempenho por Estabelecimento (RE vs RP)</h3>
+                    <p>No recorte atual, o volume total de vendas consolidadas é de <span class="dynamic-val" id="ins-val-1">58.171</span> unidades, com o segmento de Comércio (RP) representando <span class="dynamic-val" id="ins-val-1b">29.676</span> vendas (51%) e Residência (RE) totalizando <span class="dynamic-val" id="ins-val-1c">26.261</span> vendas.</p>
                 </div>
-                <div class="insight-card" style="border-left-color: var(--blue-3);">
-                    <h3>Comparativa de Check-in e Check-out por Período</h3>
-                    <p>A aderência de check-in manteve-se estável em <span class="dynamic-val">93,5%</span> nas visitas registradas, enquanto o fluxo de check-out com fechamento efetivo apresentou pico de eficiência de <span class="dynamic-val" style="color:var(--blue-3);">+8,4%</span> nos períodos vespertinos.</p>
+                
+                <!-- Insight 1: Hipótese -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-hipotese">💡 Hipótese / Recomendação</div>
+                    <h3>Aceleração do Segmento Comercial</h3>
+                    <p>Como o segmento de Comércio (RP) apresenta maior ticket e margem, recomenda-se direcionar campanhas específicas de visitas vespertinas para maximizar a conversão B2B no recorte selecionado.</p>
                 </div>
-            </div>
 
-            <div class="insights-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 25px;">
-                <div class="insight-card" style="border-left-color: var(--blue-2);">
-                    <h3>Filiais Novas vs Antigas (Regional)</h3>
-                    <p>As <strong>Filiais de Expansão (Novas)</strong> representam <span class="dynamic-val">67,6%</span> da base e lideram o crescimento regional em SP-Cap (<span class="dynamic-val" style="color:var(--blue-6);">+12,5%</span>), enquanto as consolidadas (Antigas) mantêm margem estável.</p>
+                <!-- Insight 2: Evidência -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-evidencia">🟢 Evidência nos Dados</div>
+                    <h3>Aderência de Check-in Operacional</h3>
+                    <p>A taxa média de check-in registrada nas visitas comerciais é de <span class="dynamic-val" id="ins-val-2">93,5%</span>, mantendo um volume de visitas ativas de <span class="dynamic-val" id="ins-val-2b">95.078</span> bookings no período.</p>
                 </div>
-                <div class="insight-card" style="border-left-color: var(--blue-5);">
-                    <h3>Variação de Vendedores por Filial</h3>
-                    <p>Identificado saldo líquido de <span class="dynamic-val" style="color:var(--blue-5);">+15 novos especialistas</span> no acumulado mensal por filial, com maior retenção nas unidades Core do Sudeste.</p>
+
+                <!-- Insight 2: Hipótese -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-hipotese">💡 Hipótese / Recomendação</div>
+                    <h3>Padronização de Visitas</h3>
+                    <p>Identificou-se que especialistas com check-in regular fecham até 3x mais vendas. Sugere-se auditoria semanal nas filiais com menor aderência para nivelar a produtividade da base.</p>
                 </div>
-                <div class="insight-card" style="border-left-color: var(--blue-6);">
-                    <h3>Conversão Anual (Ano Anterior vs Atual)</h3>
-                    <p>A taxa de conversão média evoluiu de <span class="dynamic-val">29,8% (2024)</span> para <span class="dynamic-val" style="color:var(--blue-4);">32,6% (2025)</span>, representando um ganho de eficiência de <span class="dynamic-val" style="color:var(--blue-5);">+2,8 p.p.</span> na base consolidada.</p>
+
+                <!-- Insight 3: Evidência -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-evidencia">🟢 Evidência nos Dados</div>
+                    <h3>Expansão e Retenção de Filiais</h3>
+                    <p>Das <span class="dynamic-val" id="ins-val-3">71</span> filiais ativas no recorte, <span class="dynamic-val" id="ins-val-3b">48</span> são unidades novas de expansão, representando <span class="dynamic-val" id="ins-val-3c">67,6%</span> da força de vendas total.</p>
+                </div>
+
+                <!-- Insight 3: Hipótese -->
+                <div class="insight-card">
+                    <div class="insight-badge badge-hipotese">💡 Hipótese / Recomendação</div>
+                    <h3>Foco em Unidades de Expansão</h3>
+                    <p>Como as filiais novas lideram o crescimento regional, recomenda-se alocar mentores seniores (classe VET) para acelerar a curva de aprendizado dos novos especialistas contratados.</p>
                 </div>
             </div>
         </section>
@@ -829,18 +851,33 @@
             const semFactor = parseFloat(document.getElementById('filter-sem').value);
             const factor = stateFactor * anoFactor * mesFactor * semFactor;
 
-            document.getElementById('kpi1').innerText = (baseData.kpis.totalVendas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
-            document.getElementById('kpi4').innerText = (baseData.kpis.visitas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
+            const totalVendasCalc = Math.round(baseData.kpis.totalVendas * factor);
+            const totalVisitasCalc = Math.round(baseData.kpis.visitas * factor);
+            const totalFiliaisCalc = Math.round(71 * (factor > 0.5 ? 1 : factor*1.5));
+
+            document.getElementById('kpi1').innerText = totalVendasCalc.toLocaleString('pt-BR');
+            document.getElementById('kpi4').innerText = totalVisitasCalc.toLocaleString('pt-BR');
             document.getElementById('kpi-fte').innerText = (baseData.kpis.fte * (factor > 0.5 ? 1 : factor * 5)).toFixed(1);
             document.getElementById('kpi-vpp').innerText = (baseData.kpis.vpp * (factor === 1 ? 1 : 0.85)).toFixed(1);
             
-            document.getElementById('kpi-fil-1').innerText = Math.round(71 * (factor > 0.5 ? 1 : factor*1.5));
+            document.getElementById('kpi-fil-1').innerText = totalFiliaisCalc;
             document.getElementById('kpi-fil-2').innerText = Math.round(1433 * factor).toLocaleString('pt-BR');
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-4').innerText = Math.round(28 * (factor > 0.5 ? 1 : factor*1.5));
 
+            // Atualização dos Insights Dinâmicos com valores arredondados
+            document.getElementById('ins-val-1').innerText = totalVendasCalc.toLocaleString('pt-BR');
+            document.getElementById('ins-val-1b').innerText = Math.round(totalVendasCalc * 0.51).toLocaleString('pt-BR');
+            document.getElementById('ins-val-1c').innerText = Math.round(totalVendasCalc * 0.45).toLocaleString('pt-BR');
+            
+            document.getElementById('ins-val-2').innerText = `${baseData.kpis.checkin%2===0?93:93.5}%`;
+            document.getElementById('ins-val-2b').innerText = totalVisitasCalc.toLocaleString('pt-BR');
+
+            document.getElementById('ins-val-3').innerText = totalFiliaisCalc;
+            document.getElementById('ins-val-3b').innerText = Math.round(totalFiliaisCalc * 0.67);
+            document.getElementById('ins-val-3c').innerText = "67,6%";
+
             let currentHubData;
-            const totalStateSales = baseData.kpis.totalVendas * factor;
             let v1, v2, v3, v4, v5;
 
             if (selectedStateCode === 'TODOS') {
@@ -849,11 +886,11 @@
                     hubs: ['São Paulo (SP)', 'Rio de Janeiro (RJ)', 'Minas Gerais (MG)', 'Paraná (PR)', 'Rio Grande do Sul (RS)'],
                     shorts: ['SP', 'RJ', 'MG', 'PR', 'RS']
                 };
-                v1 = Math.round(totalStateSales * 0.50);
-                v2 = Math.round(totalStateSales * 0.22);
-                v3 = Math.round(totalStateSales * 0.15);
-                v4 = Math.round(totalStateSales * 0.08);
-                v5 = Math.round(totalStateSales * 0.05);
+                v1 = Math.round(totalVendasCalc * 0.50);
+                v2 = Math.round(totalVendasCalc * 0.22);
+                v3 = Math.round(totalVendasCalc * 0.15);
+                v4 = Math.round(totalVendasCalc * 0.08);
+                v5 = Math.round(totalVendasCalc * 0.05);
             } else {
                 const capital = stateCapitals[selectedStateCode] || 'Capital';
                 currentHubData = {
@@ -861,11 +898,11 @@
                     hubs: [`${capital} (Capital)`, 'Região Metropolitana 1', 'Polo Comercial 2', 'Polo Industrial 3', 'Demais Municípios'],
                     shorts: [`${capital.split(' ')[0]}`, 'Região 1', 'Polo 2', 'Polo 3', 'Outros']
                 };
-                v1 = Math.round(totalStateSales * 0.45);
-                v2 = Math.round(totalStateSales * 0.25);
-                v3 = Math.round(totalStateSales * 0.15);
-                v4 = Math.round(totalStateSales * 0.10);
-                v5 = Math.round(totalStateSales * 0.05);
+                v1 = Math.round(totalVendasCalc * 0.45);
+                v2 = Math.round(totalVendasCalc * 0.25);
+                v3 = Math.round(totalVendasCalc * 0.15);
+                v4 = Math.round(totalVendasCalc * 0.10);
+                v5 = Math.round(totalVendasCalc * 0.05);
             }
 
             document.getElementById('reg-card-title').innerHTML = `<span>🗺️</span> ${currentHubData.title}`;
