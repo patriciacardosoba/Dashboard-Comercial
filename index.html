@@ -16,7 +16,6 @@
             --text-main: #1a103c;
             --text-muted: #78719c;
             
-            /* Paleta Pink / Purple (Referência da Imagem) */
             --blue-1: #1a103c;
             --blue-2: #512da8;
             --blue-3: #7c3aed;
@@ -25,7 +24,6 @@
             --blue-6: #f472b6;
         }
 
-        /* Regras responsivas para telemóveis e tablets */
         @media (max-width: 768px) {
             body, .dashboard-container, .container-principal {
                 flex-direction: column !important;
@@ -52,14 +50,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: #1f163b; color: var(--text-main); display: grid; grid-template-columns: 260px 1fr; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; }
         
-        /* Sidebar & Icons */
         .sidebar { background-color: #1f163b; color: #ffffff; border-right: none; display: flex; flex-direction: column; padding: 25px 20px; z-index: 10; }
         .sidebar .logo { color: #ffffff; }
         .sidebar .nav-item { color: #a29bb8; }
         .sidebar .nav-item:hover { color: #ffffff; background-color: rgba(255,255,255,0.05); }
         .sidebar .nav-item.active { background: linear-gradient(90deg, #d946ef 0%, #ec4899 100%); color: #ffffff; box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4); }
         
-        /* Main Area with white card container background like reference image */
         .main-content { background-color: #f8f6fb; color: var(--text-main); padding: 30px; overflow-y: auto; scroll-behavior: smooth; border-top-left-radius: 24px; border-bottom-left-radius: 24px; margin: 10px 10px 10px 0; box-shadow: -5px 0 30px rgba(0,0,0,0.2); }
         .logo { font-size: 20px; font-weight: 700; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
         .logo svg { width: 24px; height: 24px; fill: url(#grad); }
@@ -70,7 +66,6 @@
         .nav-item.active { background-color: rgba(56, 118, 166, 0.15); color: var(--blue-5); }
         .db-card { background-color: #261c4c; padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #bfaee2; line-height: 1.5; }
         
-        /* Header & Filters */
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; }
         .header h1 { font-size: 24px; font-weight: 600; }
         .header p { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
@@ -81,12 +76,10 @@
         .filter-select { background-color: #faf5ff; border: 1px solid #f3e8ff; color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-size: 13px; outline: none; cursor: pointer; transition: 0.2s; min-width: 140px; }
         .filter-select:hover, .filter-select:focus { border-color: var(--blue-4); }
         
-        /* Pages */
         .page { display: none; animation: fadeIn 0.4s; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Grids & Cards */
         .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 15px; }
         .kpi-card { background-color: #ffffff; border: 1px solid #f3e8ff; padding: 20px; border-radius: 14px; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.04); }
         .kpi-card.highlight { background: linear-gradient(135deg, #7c3aed 0%, #d946ef 100%); border: none; box-shadow: 0 8px 25px rgba(217, 70, 239, 0.25); }
@@ -112,7 +105,6 @@
 </head>
 <body>
 
-    <!-- Gradient definition for SVG -->
     <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
       <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#174580" />
@@ -262,6 +254,15 @@
                 </div>
                 <div class="chart-container">
                     <canvas id="produtoChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-section" style="margin-top: 20px;">
+                <div class="chart-header">
+                    <h3>Volume Acumulado de Vendas por Período</h3>
+                </div>
+                <div class="chart-container" style="height: 280px;">
+                    <canvas id="saldoAcumuladoChart"></canvas>
                 </div>
             </div>
         </section>
@@ -502,6 +503,7 @@
             conversao: [31.2, 31.9, 31.6, 33.5, 32.2, 32.3, 31.9, 35.4, 34.2, 31.5],
             admitidos: [15, 12, 18, 14, 16, 20, 15, 17, 10, 15],
             demitidos: [10, 14, 12, 15, 13, 11, 16, 18, 12, 14],
+            acumuladoVendas: [4800, 10400, 17000, 22400, 27800, 34500, 39200, 47000, 52800, 58171],
             kpis: {
                 totalVendas: 58171, fte: 143.3, vpp: 40.5, vpprp: 18.9,
                 visitas: 95078, conversao: 32.6, checkin: 93.5, bpp: 66.3
@@ -531,7 +533,7 @@
             }
         };
 
-        let mainChart, regionalMapChart, produtoChart, topVendChart, donutChart, classChart, checkinChart, turnoverChart;
+        let mainChart, regionalMapChart, produtoChart, saldoAcumuladoChart, topVendChart, donutChart, classChart, checkinChart, turnoverChart;
         let filialVendChart, filialClassChart, filialTipoChart, filialCoreChart;
 
         function initCharts() {
@@ -586,6 +588,37 @@
                     ]
                 },
                 options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', scales: { x: { stacked: true }, y: { stacked: true } }, plugins: { legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } } } }
+            });
+
+            const ctxSaldo = document.getElementById('saldoAcumuladoChart').getContext('2d');
+            let gradientSaldo = ctxSaldo.createLinearGradient(0, 0, 0, 250);
+            gradientSaldo.addColorStop(0, 'rgba(217, 70, 239, 0.4)');
+            gradientSaldo.addColorStop(1, 'rgba(31, 22, 59, 0.0)');
+
+            saldoAcumuladoChart = new Chart(ctxSaldo, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out*'],
+                    datasets: [{
+                        label: 'Volume Acumulado',
+                        data: [...baseData.acumuladoVendas],
+                        borderColor: '#d946ef',
+                        backgroundColor: gradientSaldo,
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2.5,
+                        pointRadius: 3,
+                        pointBackgroundColor: '#1a103c'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: 'rgba(120, 113, 156, 0.15)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
             });
 
             const ctxVend = document.getElementById('topVendedoresChart').getContext('2d');
@@ -723,13 +756,11 @@
             const semFactor = parseFloat(document.getElementById('filter-sem').value);
             const factor = anoFactor * mesFactor * semFactor;
 
-            // Atualiza KPIs da Visão Geral
             document.getElementById('kpi1').innerText = (baseData.kpis.totalVendas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
             document.getElementById('kpi4').innerText = (baseData.kpis.visitas * factor).toLocaleString('pt-BR', {maximumFractionDigits: 0});
             document.getElementById('kpi-fte').innerText = (baseData.kpis.fte * (factor > 0.5 ? 1 : factor * 5)).toFixed(1);
             document.getElementById('kpi-vpp').innerText = (baseData.kpis.vpp * (factor === 1 ? 1 : 0.85)).toFixed(1);
             
-            // Atualiza KPIs da Filial
             document.getElementById('kpi-fil-1').innerText = Math.round(71 * (factor > 0.5 ? 1 : factor*1.5));
             document.getElementById('kpi-fil-2').innerText = Math.round(1433 * factor).toLocaleString('pt-BR');
             document.getElementById('kpi-fil-3').innerText = Math.round(48 * (factor > 0.5 ? 1 : factor*1.5));
@@ -740,7 +771,6 @@
                 setTimeout(() => el.style.opacity = 1, 200);
             });
 
-            // Atualiza Gráficos da Visão Geral
             mainChart.data.datasets[1].data = baseData.vendasRE.map(v => Math.round(v * factor));
             mainChart.data.datasets[2].data = baseData.vendasRP.map(v => Math.round(v * factor));
             mainChart.update();
@@ -749,7 +779,9 @@
             produtoChart.data.datasets[1].data = [8713, 2028, 1231, 1376, 598].map(v => Math.round(v * factor));
             produtoChart.update();
 
-            // Atualiza Gráficos da aba Vendedores
+            saldoAcumuladoChart.data.datasets[0].data = baseData.acumuladoVendas.map(v => Math.round(v * factor));
+            saldoAcumuladoChart.update();
+
             topVendChart.data.datasets[0].data = baseData.topVendedores.data.map(v => Math.round(v * factor));
             topVendChart.update();
 
@@ -764,7 +796,6 @@
             turnoverChart.data.datasets[2].data = baseData.demitidos.map(v => Math.round(v * factor));
             turnoverChart.update();
 
-            // Atualiza Gráficos da aba Filial
             filialVendChart.data.datasets[0].data = baseData.filial.top10Vend.map(v => Math.round(v * factor));
             filialVendChart.update();
 
